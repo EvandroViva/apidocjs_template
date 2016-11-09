@@ -9,7 +9,7 @@ body {
 body, p, a, div, th, td {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 td.code {
@@ -19,22 +19,43 @@ td.code {
   font-weight: 400;
 }
 
+h2:after {
+  background: #eee;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  width: 100%;
+}
+
 #content {
   padding-top: 16px;
   z-Index: -1;
-  margin-left: 270px;
+  margin-left: 210px;
+}
+
+a {
+    color: #333;
 }
 
 p {
-  color: #808080;
+  color: #444;
+  font-size: 13px;
+  font-family: Open Sans, sans-serif;
+  font-weight: lighter;
 }
+
+code {
+  font-size: 10px;
+}
+
 
 h1 {
   font-family: "Source Sans Pro Semibold", sans-serif;
   font-weight: normal;
   font-size: 44px;
   line-height: 50px;
-  margin: 0 0 10px 0;
+  margin: 0 0 0px 0;
   padding: 0;
 }
 
@@ -58,7 +79,6 @@ section h1 {
   font-size: 32px;
   line-height: 40px;
   padding-bottom: 14px;
-  margin: 0 0 20px 0;
   padding: 0;
 }
 
@@ -100,6 +120,7 @@ article h4 {
 table {
   border-collapse: collapse;
   width: 100%;
+  line-height: 12px;
   margin: 0 0 20px 0;
 }
 
@@ -113,8 +134,7 @@ th {
 }
 
 td {
-  vertical-align: top;
-  padding: 2px 8px;
+  padding: 5px 8px 5px 6px;
   border: #e0e0e0 1px solid;
 }
 
@@ -131,6 +151,15 @@ td {
 .open-left {
   right: 0;
   left: auto;
+}
+
+
+/* ------------------------------------------------------------------------------------------
+ * apidoc - popover
+ * ------------------------------------------------------------------------------------------ */
+
+.popover {
+  max-width: 576px;
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -164,13 +193,25 @@ td {
  * pre / code
  * ------------------------------------------------------------------------------------------ */
 pre {
-  background-color: #292b36;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 6px;
-  position: relative;
-  margin: 10px 0 20px 0;
+    background-color: #1d1e19;
+    color: #000000;
+    padding: 10px;
+    border-radius: 0px 0px 6px 6px;
+    position: relative;
 }
+    
+pre .str {
+    color: #ded360
+}
+
+article > pre {
+    background-color: #1d1e19;
+    color: #000000;
+    padding: 5px;
+    border-radius: 6px;
+    position: relative;
+    margin: 10px 0 10px 0;
+  }
 
 code.language-text {
   word-wrap: break-word;
@@ -200,19 +241,19 @@ pre.language-html:before {
   color: #ffffff;
 }
 
-pre.language-html[data-type="get"]:before {
+pre.language-html[data-type="get"]:before, .sidenav > li:not(.nav-header) > a[data-type="get"]:after {
   background-color: green;
 }
 
-pre.language-html[data-type="put"]:before {
+pre.language-html[data-type="put"]:before, .sidenav > li:not(.nav-header) > a[data-type="put"]:after {
   background-color: #e5c500;
 }
 
-pre.language-html[data-type="post"]:before {
+pre.language-html[data-type="post"]:before, .sidenav > li:not(.nav-header) > a[data-type="post"]:after {
   background-color: #4070ec;
 }
 
-pre.language-html[data-type="delete"]:before {
+pre.language-html[data-type="delete"]:before, .sidenav > li:not(.nav-header) > a[data-type="delete"]:after {
   background-color: #ed0039;
 }
 
@@ -227,7 +268,7 @@ pre.language-api .pun {
 
 pre code {
   display: block;
-  font-size: 14px;
+  font-size: 11px;
   font-family: "Source Code Pro", monospace;
   font-style: normal;
   font-weight: 400;
@@ -245,48 +286,54 @@ pre code.sample-request-response-json {
  * Sidenav
  * ------------------------------------------------------------------------------------------ */
 .sidenav {
-  width: 228px;
+  width: 190px;
   margin: 0;
-  padding: 20px;
+  padding: 10px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #f5f5f5;
+  background-color: #eee;
   z-index: 10;
 }
 
 .sidenav > li > a {
   display: block;
-  width: 192px;
+  width: 164px;
   margin: 0;
-  padding: 2px 11px;
+  padding: 2px 11px 2px 4px;
   border: 0;
   border-left: transparent 4px solid;
   border-right: transparent 4px solid;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .sidenav > li.nav-header > a {
   padding: 5px 15px;
-  border: 1px solid #e5e5e5;
-  width: 190px;
+  width: 150px;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #ffffff;
 }
 
+.nav-list > li {
+  line-height: 15px;
+}
+
 .sidenav > li.nav-header.active > a {
-  background-color: #0088cc;
+  background-color: #0077b3;
+}
+
+.nav-list>.active>a, .nav-list>.active>a:hover, .nav-list>.active>a:focus {
+  background-color: #0077b3;
 }
 
 .sidenav > .active > a {
-  position: relative;
   z-index: 2;
 }
 
@@ -300,6 +347,33 @@ pre code.sample-request-response-json {
 
 .sidenav > li.is-new a {
   border-left: #e5e5e5 4px solid;
+}
+
+.sidenav > li:not(.nav-header) > a:before {
+    content: counter(list-counter)". ";
+}
+.sidenav > li:not(.nav-header) {
+    counter-increment: list-counter;
+}
+.sidenav > li.nav-header {
+    counter-reset: list-counter;
+}
+
+.sidenav > li:not(.nav-header) > a:after {
+    content: attr(data-type);
+    position: absolute;
+    right: 15px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 100;
+    font-size: 8px;
+    display: inline-block;
+    padding: 0px 2px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: #3387CC;
+    color: #ffffff;
+    width: 30px;
+    text-align: center;
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -488,6 +562,11 @@ ul.nav-tabs {
   margin: 0;
 }
 
+.nav-tabs>li>a {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
 /* ------------------------------------------------------------------------------------------
  * Print
  * ------------------------------------------------------------------------------------------ */
@@ -520,13 +599,17 @@ ul.nav-tabs {
   }
 
   pre {
-    background-color: #ffffff;
+    background-color: #1d1e19;
     color: #000000;
     padding: 10px;
     border: #808080 1px solid;
     border-radius: 6px;
     position: relative;
     margin: 10px 0 20px 0;
+  }
+    
+  pre .str {
+    color: #ded360
   }
 
 } /* /@media print */
